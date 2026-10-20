@@ -1,0 +1,171 @@
+/* ===== Altaf IT Services – Tri-fold brochure (A4 landscape, 3 × 99mm panels) ===== */
+:root {
+  --navy: #0b2a4a;
+  --navy-2: #12406e;
+  --teal: #00b3a4;
+  --orange: #ff7a1a;
+  --ink: #1d2733;
+  --muted: #5b6776;
+  --paper: #ffffff;
+  --tint: #eef6fb;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: #cfd8e1;
+  padding: 24px 12px 48px;
+  line-height: 1.45;
+}
+
+.sheet-label {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 18px 0 8px;
+}
+
+/* ---------- Sheet & panels ---------- */
+.sheet {
+  width: 297mm;
+  height: 210mm;
+  margin: 0 auto 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--paper);
+  box-shadow: 0 8px 30px rgba(11, 42, 74, .25);
+  overflow: hidden;
+}
+
+.panel {
+  padding: 14mm 9mm 12mm;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.panel + .panel { border-left: 1px dashed #c4ced8; }
+.tint { background: var(--tint); }
+
+h1, h2, h3 { line-height: 1.15; }
+a { color: inherit; text-decoration: none; }
+.ico { font-size: 20px; flex: none; width: 34px; height: 34px; display: grid; place-items: center; background: var(--tint); border-radius: 50%; }
+
+/* ---------- Section titles (inside) ---------- */
+.sec-title {
+  font-size: 17px;
+  color: var(--navy);
+  padding-bottom: 8px;
+  margin-bottom: 6px;
+  border-bottom: 3px solid var(--teal);
+}
+
+/* ---------- Lists ---------- */
+.why-list, .cover-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.why-list li, .cover-list li { display: flex; gap: 10px; align-items: flex-start; }
+.why-list h3, .cover-list h3 { font-size: 13.5px; color: var(--navy); margin-bottom: 2px; }
+.why-list p, .cover-list p { font-size: 11.5px; color: var(--muted); }
+.cover-list .ico { background: #e1f6f3; }
+
+/* ---------- Package tiers ---------- */
+.tier {
+  background: #fff;
+  border: 1px solid #d3dfe9;
+  border-left: 5px solid var(--navy-2);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 11.5px;
+}
+.tier header { display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-bottom: 3px; }
+.tier h3 { font-size: 13px; color: var(--navy); }
+.tier header span {
+  font-size: 10px; font-weight: 700; color: #fff; background: var(--navy-2);
+  padding: 2px 8px; border-radius: 99px; white-space: nowrap;
+}
+.tier .best { font-weight: 600; color: var(--teal); font-size: 11px; margin-bottom: 3px; }
+.tier p:last-child { color: var(--muted); }
+.tier.featured { border-left-color: var(--orange); box-shadow: 0 4px 14px rgba(255, 122, 26, .18); }
+.tier.featured header span { background: var(--orange); }
+
+/* ---------- Front cover ---------- */
+.cover {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 70%, #0f5a86 100%);
+  color: #fff;
+  justify-content: space-between;
+}
+.cover::after {
+  content: ""; position: absolute; right: -50px; bottom: -50px;
+  width: 190px; height: 190px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,179,164,.55), transparent 70%);
+}
+.cover-top { display: flex; align-items: center; gap: 12px; }
+.logo-mark {
+  width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center;
+  background: var(--teal); color: #fff; font-size: 30px; font-weight: 800;
+}
+.cover h1 { font-size: 30px; letter-spacing: .06em; }
+.cover h1 span { font-size: 17px; font-weight: 600; letter-spacing: .22em; color: var(--teal); }
+.cover-sub { font-size: 14px; color: #cfe3f3; }
+.cover-hook { font-size: 21px; font-weight: 800; line-height: 1.25; }
+.cover-hook em { font-style: normal; color: var(--orange); }
+.cover-pills { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.cover-pills li {
+  font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 99px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); width: fit-content;
+}
+.cover-pills li::before { content: "✔ "; color: var(--teal); }
+.cover-contact { font-size: 11.5px; color: #dbe9f5; border-top: 1px solid rgba(255,255,255,.25); padding-top: 8px; position: relative; z-index: 1; }
+
+/* ---------- Back cover (CTA) ---------- */
+.back {
+  background: var(--navy);
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.back .badge {
+  background: var(--orange); color: #fff; font-weight: 800; letter-spacing: .12em;
+  padding: 6px 18px; border-radius: 99px; font-size: 13px;
+}
+.back h2 { font-size: 21px; line-height: 1.25; }
+.back > p { font-size: 12.5px; color: #cfe3f3; }
+.btn {
+  display: block; width: 100%; padding: 10px; border-radius: 99px;
+  background: var(--teal); color: #fff; font-weight: 700; font-size: 13px;
+}
+.btn-wa { background: #25d366; }
+.back-sign { margin-top: 10px; font-size: 12px; color: #9fc2df; border-top: 1px solid rgba(255,255,255,.2); padding-top: 10px; }
+.back-sign strong { color: #fff; font-size: 14px; }
+
+/* ---------- Contact flap ---------- */
+.flap h2 { font-size: 18px; color: var(--navy); border-bottom: 3px solid var(--orange); padding-bottom: 8px; }
+.contact-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+.contact-list li { display: flex; gap: 10px; font-size: 12px; align-items: center; }
+.contact-list strong { color: var(--navy); }
+.flap-note { margin-top: auto; background: var(--tint); border-left: 5px solid var(--teal); border-radius: var(--radius); padding: 12px; font-weight: 700; color: var(--navy); font-size: 12.5px; }
+
+/* ---------- Responsive screen view ---------- */
+@media screen and (max-width: 1150px) {
+  .sheet { transform-origin: top center; zoom: .75; }
+}
+@media screen and (max-width: 900px) {
+  .sheet { width: 100%; height: auto; grid-template-columns: 1fr; zoom: 1; }
+  .panel { min-height: 160mm; }
+  .panel + .panel { border-left: 0; border-top: 1px dashed #c4ced8; }
+}
+
+/* ---------- Print ---------- */
+@page { size: A4 landscape; margin: 0; }
+@media print {
+  body { background: none; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet-label { display: none; }
+  .sheet { box-shadow: none; margin: 0; zoom: 1; page-break-after: always; break-after: page; }
+}
